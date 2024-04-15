@@ -21,11 +21,11 @@ Comment.belongsTo(User, {
   });
 
   Comment.hasOne(BlogPost, {
-    foreignKey: 'id'
+    foreignKey: 'post_id'
   });
 
   Comment.belongsTo(BlogPost, {
-    foreignKey: 'id'
+    foreignKey: 'post_id'
   });
 
 module.exports = { User, Project };
