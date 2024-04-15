@@ -20,4 +20,12 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
   });
 
+  Comment.hasOne(BlogPost, {
+    foreignKey: 'id'
+  });
+
+  Comment.belongsTo(BlogPost, {
+    foreignKey: 'id'
+  });
+
 module.exports = { User, Project };
