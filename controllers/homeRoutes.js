@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
   try {
     const PostData = await BlogPost.findAll({
       include: [{ model: User }]
