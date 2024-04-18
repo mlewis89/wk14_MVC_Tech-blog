@@ -39,9 +39,9 @@ router.get('/posts/:id', withAuth, async (req, res) => {
 
     const postData = await BlogPost.findByPk(req.params.id,{include: [{model: User, attributes: ['name']},{model: Comment, include: {model: User, attributes: ['name']}}]});
     // Serialize data so the template can read it
-    console.log(postData);
+    //console.log(postData);
     const post = postData.get({ plain: true });
-    console.log(post);
+    //console.log(post);
     
     res.render('post', {post, logged_in: req.session.logged_in});
     return;
