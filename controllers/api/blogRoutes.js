@@ -39,11 +39,11 @@ router.post('/comment', withAuth, async (req, res) => {
 
 router.delete('/post/:id', withAuth, async (req, res) => {
   try {
-    
+    console.log('HERRE')
     //console.log(req.body, req.session.user_id);
     const deletedPost = await BlogPost.destroy({
       where: {
-        id: req.session.id,
+        id: req.params.id,
       },
     });;
     //console.log('new Post Added', newPost)
