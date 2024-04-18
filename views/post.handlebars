@@ -1,5 +1,5 @@
 <!-- Loop over each object in the projects array -->
-<div class="row mb-4 post">
+<div class="row mb-4 post" data-post-id={{post.id}}>
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
@@ -12,20 +12,27 @@
       {{post.content}}
     </p>
   </div>
-  {{#each post.comment as |comment| }}
-<div class="row mb-4 post">
+  <div class="row mb-4 comment-section">
   <div class="col-md-7">
-    <p>
-      {{comment.content}}
-    </p>
-  </div>
-  <div class="col-md-5">
-    <p>Created by {{comment.user_id}} on {{format_date comment.date_created}}</p>
-  </div>
-  
-</div>
+  <ul class="comments">
+  {{#each post.comments as |comment| }}
+<li class="comment" data-comment-id={{comment.id}}>
+  <div>{{comment.user_id}} commented </div>
+  <div>{{comment.content}}</div>
+  <div> {{format_date comment.date_created}} </div>
+  </li>
 {{/each}}
-  <div class="col-md-7">
-    <button id="add-Comment">Leave Comment</button>
-  </div>
+</ul>
+    <form class="form comment-form">
+      <div class="form-group">
+        <label for="new-comment">Add a comment:</label>
+        <input class="form-input" type="text" id="new-comment" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" data-post-id={{post.id}}>Submit Comment</button>
+      </div>
+    </form>
 </div>
+
+
+      <script src='/js/comment.js'></script>

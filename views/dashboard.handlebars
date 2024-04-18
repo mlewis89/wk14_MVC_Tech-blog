@@ -1,6 +1,14 @@
 
 <h2>Welcome {{user.name}}!</h2>
 
+<div class="row mb-4 post">
+      <div class="col-md-7">
+    <button id="add-post">Create Post</button>
+  </div>
+  </div>
+  
+</div>
+
 <!-- Loop over each object in the projects array -->
 {{#each user.blogposts as |post| }}
 <div class="row mb-4 post">
@@ -18,3 +26,16 @@
   </div>
 </div>
 {{/each}}
+
+    <form class="form post-form">
+      <div class="form-group">
+        <label for="new-post">Create a Blog Post:</label>
+        <input class="form-input" type="text" id="new-post" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit Post</button>
+      </div>
+    </form>
+
+
+      <script src='/js/post.js'></script>
