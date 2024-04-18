@@ -13,7 +13,7 @@ router.post('/post', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    console.log('new Post Added', newPost)
+    //console.log('new Post Added', newPost)
     res.status(200).json(newPost);
     
   } catch (err) {
@@ -29,7 +29,7 @@ router.post('/comment', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    console.log('newComment Added', newComment)
+    //console.log('newComment Added', newComment)
     res.status(200).json(newComment);
     
   } catch (err) {

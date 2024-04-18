@@ -1,25 +1,24 @@
 <!-- Loop over each object in the projects array -->
 <div class="row mb-4 post" data-post-id={{post.id}}>
-  <div class="col-md-5">
+  <div class="col-md-10">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       <a href="/posts/{{post.id}}">{{post.title}}</a>
     </h2>
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-12">
     <p>
       {{post.content}}
     </p>
   </div>
-  <div class="row mb-4 comment-section">
-  <div class="col-md-7">
+  <div class="row mb-12 comment-section">
+  <div class="col-md-12">
   <ul class="comments">
   {{#each post.comments as |comment| }}
 <li class="comment" data-comment-id={{comment.id}}>
   <div class="comment-content">{{comment.content}}</div>
-  <div class="comment-user">{{comment.user.name}} on </div>
-  <div class="comment-date"> {{format_date comment.date_created}} </div>
+  <div class="comment-data">{{comment.user.name}}, {{format_date comment.date_created}} </div>
   </li>
 {{/each}}
 </ul>
