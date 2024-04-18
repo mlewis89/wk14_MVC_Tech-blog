@@ -44,17 +44,18 @@ router.get('/dashboard', async (req, res) => {
   res.redirect('login');
 });
 
-router.get('/posts/:id', async (req, res) => {
+router.get('/posts/:id', withAuth, async (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    const postData = await BlogPost.findByPk(req.params.id,{include: [{model: User},{model: Comment}]});
+
+    const postData = await BlogPost.findByPk(req.params.id,{include: [{model: User, attributes: ['name']},{model: Comment, include: {model: User, attributes: ['name']}}]});
     // Serialize data so the template can read it
+    console.log(postData);
     const post = postData.get({ plain: true });
+    console.log(post);
+    
     res.render('post', {post});
     return;
-  }
-
-  res.redirect('../login');
+  
 });
 
 module.exports = router;
