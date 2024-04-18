@@ -37,4 +37,37 @@ router.post('/comment', withAuth, async (req, res) => {
   }
 });
 
+router.delete('/post/:id', withAuth, async (req, res) => {
+  try {
+    
+    //console.log(req.body, req.session.user_id);
+    const deletedPost = await BlogPost.destroy({
+      where: {
+        id: req.session.id,
+      },
+    });;
+    //console.log('new Post Added', newPost)
+    res.status(200).json(deletedPost);
+    
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/post/:id', withAuth, async (req, res) => {
+  try {
+    
+    //console.log(req.body, req.session.user_id);
+    const newPost = await BlogPost.update(  {...req.body},
+      {
+      where: {id : req.params.id},
+    });
+    //console.log('new Post Added', newPost)
+    res.status(200).json(newPost);
+    
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
