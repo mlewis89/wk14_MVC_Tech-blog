@@ -3,7 +3,7 @@ const CommentSubmitHandler = async (event) => {
 
   // Collect values from the comment form
   const commentText = document.querySelector('#new-comment').value.trim();
-  const currentPostId = event.target.closest('.post').getAttribute('data-post-id');
+  const currentPostId = event.target.closest('.postData').getAttribute('data-post-id');
  
 if(commentText && currentPostId)
 {
@@ -26,7 +26,7 @@ if(commentText && currentPostId)
 
 const PostDeleteHandler = async (event) => {
   
-  const currentPostId = event.target.closest('.post').getAttribute('data-post-id');
+  const currentPostId = event.target.closest('.postData').getAttribute('data-post-id');
   if(confirm(`Are you sure you want to delete this post?`))
 {
     // Send a POST request to the API endpoint
@@ -46,23 +46,47 @@ const PostDeleteHandler = async (event) => {
 };
 
 const PostUpdateHandler = async (event) => {
-  
-  const currentPostId = event.target.closest('.post').getAttribute('data-post-id');
+
+  const postTitle = document.querySelector('#update-post-title');
+  const postContent = document.querySelector('#update-post-content');
+
+
+  const title = document.querySelector('#post-title').textContent; 
+   const content = document.querySelector('#post-content').textContent;
+
+  postTitle.value = title;
+  postContent.value = content;
+
+  document.querySelector('#post-update').classList.remove("hidden");
+  document.querySelector('#post-static').classList.add("hidden");
+};
+
+const PostUpdateSubmitHandler = async (event) => {
+
+
+
+  const postTitle = document.querySelector('#update-post-title').value.trim();
+  const postContent = document.querySelector('#update-post-content').value.trim();
+  const currentPostId = event.target.closest('.postData').getAttribute('data-post-id');
+
+  console.log('************************************HERE');
   if(1)
 {
     // Send a POST request to the API endpoint
     const response = await fetch(`/api/blog/post/${currentPostId}`, {
-      method: 'DELETE',
+      method: 'PUT',
+      body: JSON.stringify({ title: postTitle, content: postContent }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
       // If successful, redirect the browser to the /dashboard page
-      document.location.replace(`/dashboard`);
+      //document.location.replace(`/dashboard/${currentPostId}`);
     } else {
       alert(response.statusText);
     }
   }
+
 
 };
 
@@ -74,6 +98,10 @@ document
   document
   .querySelector('#btn-update-post')
   .addEventListener('click', PostUpdateHandler);
+
+  document
+  .querySelector('#btn-update-submit')
+  .addEventListener('click', PostUpdateSubmitHandler);
 
   document
   .querySelector('#btn-delete-post')

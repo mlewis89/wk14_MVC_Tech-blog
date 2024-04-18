@@ -39,7 +39,6 @@ router.post('/comment', withAuth, async (req, res) => {
 
 router.delete('/post/:id', withAuth, async (req, res) => {
   try {
-    console.log('HERRE')
     //console.log(req.body, req.session.user_id);
     const deletedPost = await BlogPost.destroy({
       where: {
@@ -56,8 +55,7 @@ router.delete('/post/:id', withAuth, async (req, res) => {
 
 router.put('/post/:id', withAuth, async (req, res) => {
   try {
-    
-    //console.log(req.body, req.session.user_id);
+     //console.log(req.body, req.session.user_id);
     const newPost = await BlogPost.update(  {...req.body},
       {
       where: {id : req.params.id},
