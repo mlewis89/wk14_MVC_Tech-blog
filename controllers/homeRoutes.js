@@ -50,7 +50,6 @@ router.get('/posts/:id', async (req, res) => {
     const postData = await BlogPost.findByPk(req.params.id,{include: [{model: User},{model: Comment}]});
     // Serialize data so the template can read it
     const post = postData.get({ plain: true });
-    console.log(post);
     res.render('post', {post});
     return;
   }

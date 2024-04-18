@@ -2,13 +2,14 @@ const PostSubmitHandler = async (event) => {
   event.preventDefault();
 
   // Collect values from the login form
-  const comment = document.querySelector('#new-comment').value.trim();
+  const postTitle = document.querySelector('#new-post-title').value.trim();
+  const postContent = document.querySelector('#new-post-content').value.trim();
 
-  if (comment) {
+  if (postTitle && postContent ) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/blog/post', {
       method: 'POST',
-      body: JSON.stringify({ post }),
+      body: JSON.stringify({ title: postTitle, content: postContent }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -23,4 +24,4 @@ const PostSubmitHandler = async (event) => {
 
 document
   .querySelector('.post-form')
-  .addEventListener('submit', PostSumbitHandler);
+  .addEventListener('submit', PostSubmitHandler);
