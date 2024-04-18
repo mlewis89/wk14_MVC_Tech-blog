@@ -17,9 +17,9 @@
   <ul class="comments">
   {{#each post.comments as |comment| }}
 <li class="comment" data-comment-id={{comment.id}}>
-  <div>{{comment.user_id}} commented </div>
-  <div>{{comment.content}}</div>
-  <div> {{format_date comment.date_created}} </div>
+  <div class="comment-content">{{comment.content}}</div>
+  <div class="comment-user">{{comment.user_id}} on </div>
+  <div class="comment-date"> {{format_date comment.date_created}} </div>
   </li>
 {{/each}}
 </ul>
