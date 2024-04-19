@@ -101,10 +101,16 @@ Then use insomnia to communicate with the API interface.
 ## GitHub repository
 https://github.com/mlewis89/wk14_MVC_Tech-blog
 
+## Heroku Hosting
+https://murmuring-wildwood-67063-687b09e4379f.herokuapp.com/
+
 
 ## Screenshots / Video of Completed Challenge
-[Click here to view a video of the application in use](./assets/CodeExample.webm)
-[google drive link to video](https://drive.google.com/file/d/1bl9MdOzQdQstMaTZAwA3KpLw3xlCQIqT/view)
+[Screenshot of completed application](./assets/Capture1.PNG)
+[Screenshot of completed application](./assets/Capture2.PNG)
+[Screenshot of completed application](./assets/Capture3.PNG)
+[Screenshot of completed application](./assets/Capture4.PNG)
+[Screenshot of completed application](./assets/Capture5.PNG)
 
 ## License
 This project is licensed under the MIT.
