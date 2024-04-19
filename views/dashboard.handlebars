@@ -1,30 +1,25 @@
-
 <h2>Welcome {{user.name}}!</h2>
 
-<div class="row mb-4 post">
-      <div class="col-md-7">
-  </div>
-  </div>
-  
-</div>
-
 <!-- Loop over each object in the projects array -->
-{{#each user.blogposts as |post| }}
-<div class="row mb-4 post">
-  <div class="col-md-5">
+<div class="postData" data-post-id={{post.id}}>
+  <div id="post-static">
+    {{#each user.blogposts as |post| }}
+<div class="row mb-6 post" id="post-list">
+  <div class="col-md-10">
     <h3>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       <a href="/posts/{{post.id}}">{{post.title}}</a>
     </h3>
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-12">
     <p>
       {{post.content}}
     </p>
   </div>
 </div>
 {{/each}}
+  <div id="Create-post" class="col-md-12">
 <h2>Create a Blog Post:</h2>
     <form id="new-post-form"  class="form post-form">
       <div class="form-group">
@@ -33,12 +28,13 @@
       </div>
       <div class="form-group">
         <label for="new-post-content">Create a Blog Post:</label>
-        <input class="form-input" type="text" id="new-post-content" />
+        <textarea class="form-input" rows="10" type="text" id="new-post-content" /></textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit Post</button>
       </div>
     </form>
-
+</div>
+</div>
 
       <script src='/js/dashboard.js'></script>
